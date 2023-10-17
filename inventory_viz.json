@@ -1,0 +1,179 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/santon21/santon21.github.io/main/building_inventory%20(1).csv",
+    "format": {"type": "csv"}
+  },
+  "spacing": 100,
+  "vconcat": [
+    {
+      "title": {
+        "text": "Building Count by Congressional District",
+        "anchor": "start",
+        "offset": 50,
+        "dx": 470
+      },
+      "mark": "bar",
+      "transform": [{"filter": "datum['Congress Dist'] !== '0'"}],
+      "encoding": {
+        "x": {
+          "field": "Congress Dist",
+          "type": "ordinal",
+          "axis": {
+            "title": "Congressional District",
+            "labelFontSize": 10,
+            "titleFontSize": 15,
+            "titleColor": "#6f3b3b",
+            "titlePadding": 20
+          }
+        },
+        "y": {
+          "aggregate": "count",
+          "type": "quantitative",
+          "axis": {
+            "title": "Number of Buildings",
+            "labelFontSize": 10,
+            "titleFontSize": 15,
+            "titleColor": "#6f3b3b",
+            "titlePadding": 20
+          }
+        },
+        "color": {
+          "field": "Congress Dist",
+          "type": "ordinal",
+          "legend": {"title": "Congressional District", "offset": -900},
+          "scale": {
+            "domain": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13",
+              "14",
+              "15",
+              "16",
+              "17",
+              "18"
+            ],
+            "range": [
+              "#1f77b4",
+              "#ff7f0e",
+              "#2ca02c",
+              "#d62728",
+              "#9467bd",
+              "#8c564b",
+              "#e377c2",
+              "#7f7f7f",
+              "#bcbd22",
+              "#17becf",
+              "#9edae5",
+              "#dbdb8d",
+              "#c49c94",
+              "#f7b6d2",
+              "#c7c7c7",
+              "#aec7e8",
+              "#ffbb78",
+              "#98df8a"
+            ]
+          }
+        },
+        "tooltip": [
+          {"field": "Congress Dist", "type": "nominal"},
+          {
+            "aggregate": "count",
+            "type": "quantitative",
+            "title": "Number of Buildings"
+          }
+        ]
+      },
+      "width": 1000,
+      "height": 400
+    },
+    {
+      "title": {
+        "text": "Building Count by Year Constructed",
+        "anchor": "start",
+        "offset": 50,
+        "dx": 470
+      },
+      "mark": "line",
+      "transform": [{"filter": "datum['Year Constructed'] !== '0'"}],
+      "encoding": {
+        "x": {
+          "field": "Year Constructed",
+          "type": "ordinal",
+          "axis": {
+            "title": "Year Constructed",
+            "labelFontSize": 10,
+            "titleFontSize": 20,
+            "titleColor": "#6f3b3b",
+            "titlePadding": 20
+          },
+          "values": [
+            1753,
+            1763,
+            1773,
+            1783,
+            1793,
+            1803,
+            1813,
+            1823,
+            1833,
+            1843,
+            1853,
+            1863,
+            1873,
+            1883,
+            1893,
+            1903,
+            1913,
+            1923,
+            1933,
+            1943,
+            1953,
+            1963,
+            1973,
+            1983,
+            1993,
+            2003,
+            2013,
+            2023
+          ],
+          "labelFlush": true,
+          "tickCount": 10,
+          "tickMinStep": 1
+        },
+        "y": {
+          "aggregate": "count",
+          "type": "quantitative",
+          "axis": {
+            "title": "Number of Buildings",
+            "labelFontSize": 10,
+            "titleFontSize": 15,
+            "titleColor": "#6f3b3b",
+            "titlePadding": 20
+          }
+        },
+        "tooltip": [
+          {"field": "Year Constructed", "type": "nominal"},
+          {
+            "aggregate": "count",
+            "type": "quantitative",
+            "title": "Number of Buildings"
+          }
+        ]
+      },
+      "width": 2000,
+      "height": 400
+    }
+  ],
+  "config": {"title": {"fontSize": 24}}
+}
